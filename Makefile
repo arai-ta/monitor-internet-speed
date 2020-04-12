@@ -17,4 +17,4 @@ $(SPEEDTEST):
 
 # init file
 $(RECORD_CSV_FILE):
-	$(SPEEDTEST) --csv-header
+	$(SPEEDTEST) --csv-header > $@
