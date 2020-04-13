@@ -12,7 +12,7 @@ SPEEDTEST = /usr/local/bin/speedtest
 SPEEDTEST_SERVER = 14623
 
 record: $(RECORD_CSV_FILE)
-	$(SPEEDTEST) --server $(SPEEDTEST_SERVER) --csv >> $(RECORD_CSV_FILE)
+	@$(SPEEDTEST) --server $(SPEEDTEST_SERVER) --csv >> $(RECORD_CSV_FILE)
 .PHONY: record
 
 intall: $(SPEEDTEST) $(RECORD_CSV_FILE) $(PLIST_INSTALL_PATH)
