@@ -18,7 +18,7 @@ record: $(RECORD_CSV_FILE)
 intall: $(SPEEDTEST) $(RECORD_CSV_FILE) $(PLIST_INSTALL_PATH)
 .PHONY: install
 
-# install
+# install via brew
 $(SPEEDTEST):
 	brew install speedtest-cli
 
@@ -29,5 +29,16 @@ $(RECORD_CSV_FILE):
 # register job
 $(PLIST_INSTALL_PATH): $(PLIST_FILE)
 	cp -p $< $@
-	launchctl load $@
+
+load:
+	launchctl load $(PLIST_INSTALL_PATH)
+.PHONY: load
+
+unload:
+	launchctl unload $(PLIST_INSTALL_PATH)
+.PHONY: unload
+
+reload: unload $(PLIST_INSTALL_PATH) load
+.PHONY: reload
+
 
